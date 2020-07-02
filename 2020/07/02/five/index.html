@@ -6,15 +6,21 @@
     
 
     
-    <title>Archive: 2020 | Hexo</title>
+    <title>解决java导出文件时文件名中文不显示/乱码 | Hexo</title>
     
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
-    <meta property="og:type" content="website">
-<meta property="og:title" content="Hexo">
-<meta property="og:url" content="https://conanisbest.github.io/archives/2020/index.html">
+    <meta name="keywords" content="" />
+    
+    <meta name="description" content="解决java导出文件时文件名中文不显示&#x2F;乱码 直接把中文文件名改为iso-8859-1就可以了~ response.setHeader(“Content-Disposition”, “attachment;filename&#x3D;”     + new String(fileName.getBytes(),”iso-8859-1”) + “.xls”);">
+<meta property="og:type" content="article">
+<meta property="og:title" content="解决java导出文件时文件名中文不显示&#x2F;乱码">
+<meta property="og:url" content="https://conanisbest.github.io/2020/07/02/five/index.html">
 <meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="解决java导出文件时文件名中文不显示&#x2F;乱码 直接把中文文件名改为iso-8859-1就可以了~ response.setHeader(“Content-Disposition”, “attachment;filename&#x3D;”     + new String(fileName.getBytes(),”iso-8859-1”) + “.xls”);">
 <meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2020-07-02T07:39:23.000Z">
+<meta property="article:modified_time" content="2020-07-02T07:40:12.801Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
     
@@ -142,345 +148,160 @@
                         <div class="main-body-header">
     <h1 class="header">
     
-    <i class="icon fa fa-archive"></i>Archive: 2020
+    uncategorized
     </h1>
 </div>
 
                         <div class="main-body-content">
-                            
-
-    
-    
+                            <article id="post-five" class="article article-single article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
         
-        
-        <section class="archives-wrap">
-            <div class="archive-year-wrap">
-                <a href="/archives/2020" class="archive-year"><i class="icon fa fa-calendar-o"></i>2020</a>
-            </div>
-            <div class="archives">
-    
-    
-    
-        <div class="article-row">
-    
-        <article class="article article-summary">
-    <div class="article-summary-inner">
-        
-        <a href="/2020/07/02/five/" class="thumbnail">
-    
-    
-        <span class="thumbnail-image thumbnail-none"></span>
-    
-    
-        
-<span class="comment-counter">
-    <i class="fa fa-comments-o"></i>
-    
-        <span class="disqus-comment-count" data-disqus-identifier="" data-disqus-url="https://conanisbest.github.io/2020/07/02/five/">0</span>
-    
-</span>
-
-
-    
-</a>
-
-        
-        <div class="article-meta">
-            <div class="category">
-            
-            </div>
-            <div class="date"><time datetime="2020-07-02T07:39:23.000Z" itemprop="datePublished">2020-07-02</time></div>
-        </div>
-        
+            <header class="article-header">
+                
     
         <h1 class="article-title" itemprop="name">
-        <a href="/2020/07/02/five/">解决java导出文件时文件名中文不显示/乱码</a>
+        解决java导出文件时文件名中文不显示/乱码
         </h1>
     
 
-        <p class="article-excerpt">
-            解决java导出文件时文件名中文不显示/乱码
+            </header>
+        
+        
+            <div class="article-meta">
+                
+    <div class="article-date">
+      <i class="fa fa-calendar"></i>
+      <a href="/2020/07/02/five/" class="article-date">
+         <time datetime="2020-07-02T07:39:23.000Z" itemprop="datePublished">2020-07-02</time>
+      </a>
+    </div>
+
+
+                
+
+                
+                
+
+                
+
+            </div>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+            
+
+            
+
+            
+
+            <p><strong>解决java导出文件时文件名中文不显示/乱码</strong></p>
+<p>直接把中文文件名改为iso-8859-1就可以了~</p>
+<p>response.setHeader(“Content-Disposition”, “attachment;filename=”     + new String(fileName.getBytes(),”iso-8859-1”) + “.xls”);</p>
+
+        </div>
+        <footer class="article-footer">
+            
+
+
+
+    <a data-url="https://conanisbest.github.io/2020/07/02/five/" data-id="ckc4ha6ix0002fgw7e7m1attp" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+<script>
+    (function ($) {
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+        </footer>
+    </div>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        "author": {
+            "@type": "Person",
+            "name": "John Doe"
+        },
+        "headline": "解决java导出文件时文件名中文不显示/乱码",
+        "image": "https://Conanisbest.github.io",
+        "keywords": "",
+        "genre": "",
+        "datePublished": "2020-07-02",
+        "dateCreated": "2020-07-02",
+        "dateModified": "2020-07-02",
+        "url": "https://Conanisbest.github.io/2020/07/02/five/",
+        "description": "解决java导出文件时文件名中文不显示/乱码
 直接把中文文件名改为iso-8859-1就可以了~
 response.setHeader(“Content-Disposition”, “attachment;filename=”     + new String(fileName.getBytes(),”iso-8859-1”) + “.xls”);
+",
+        "wordCount": 11
+    }
+</script>
 
-        </p>
-    </div>
 </article>
-    
 
-    
-    
-    
-    
-        <article class="article article-summary">
-    <div class="article-summary-inner">
-        
-        <a href="/2020/07/02/four/" class="thumbnail">
-    
-    
-        <span class="thumbnail-image thumbnail-none"></span>
-    
+    <section id="comments">
     
         
-<span class="comment-counter">
-    <i class="fa fa-comments-o"></i>
-    
-        <span class="disqus-comment-count" data-disqus-identifier="" data-disqus-url="https://conanisbest.github.io/2020/07/02/four/">0</span>
-    
-</span>
-
-
-    
-</a>
-
-        
-        <div class="article-meta">
-            <div class="category">
-            
-            </div>
-            <div class="date"><time datetime="2020-07-02T07:30:06.000Z" itemprop="datePublished">2020-07-02</time></div>
-        </div>
-        
-    
-        <h1 class="article-title" itemprop="name">
-        <a href="/2020/07/02/four/">hibernate工作原理及作用</a>
-        </h1>
-    
-
-        <p class="article-excerpt">
-            hibernate工作原理及作用
-2015年08月04日 15:00:17 进击的LTQ 阅读数 54747
-转载自 http://www.cnblogs.com/dashi/p/3597969.html#commentform
-JAVA Hibernate工作原理及为什么要用
-hibernate 简介：
-hibernate是一个开源框架，它是对象关联关系映射的框架，它对JDBC做了轻量级的封装，
-        </p>
+    <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript" target="_blank" rel="noopener">comments powered by Disqus.</a></noscript>
     </div>
-</article>
-    
-        </div>
-    
-
-    
-    
-    
-    
-        <div class="article-row">
-    
-        <article class="article article-summary">
-    <div class="article-summary-inner">
-        
-        <a href="/2020/07/02/three/" class="thumbnail">
-    
-    
-        <span style="background-image:url(C:/Users/Administrator/AppData/Local/YNote/data/qq603F12696BD3B57EFA011C366B93AE8F/907d65c92f7e465c8276609ee42bf528/640.webp)" alt="JVM 发生 OOM 的 8 种原因、及解决办法" class="thumbnail-image"></span>
-    
-    
-        
-<span class="comment-counter">
-    <i class="fa fa-comments-o"></i>
-    
-        <span class="disqus-comment-count" data-disqus-identifier="" data-disqus-url="https://conanisbest.github.io/2020/07/02/three/">0</span>
-    
-</span>
 
 
     
-</a>
-
-        
-        <div class="article-meta">
-            <div class="category">
-            
-            </div>
-            <div class="date"><time datetime="2020-07-02T07:26:13.000Z" itemprop="datePublished">2020-07-02</time></div>
-        </div>
-        
-    
-        <h1 class="article-title" itemprop="name">
-        <a href="/2020/07/02/three/">JVM 发生 OOM 的 8 种原因、及解决办法</a>
-        </h1>
-    
-
-        <p class="article-excerpt">
-            JVM 发生 OOM（out of memory 内存溢出） 的 8 种原因、及解决办法
-
-
-来源：www.importnew.com/author/tangyouhua
-1. Java 堆空间
-发生频率：5颗星
-造成原因
-
-无法在 Java 堆中分配对象
-吞吐量增加
-应用程序无意中保存了对象引用，对象无法被 GC 回收
-应用程序过度使用 finalizer。finalizer 对象不能被 GC 
-        </p>
-    </div>
-</article>
-    
-
-    
-    
-    
-    
-        <article class="article article-summary">
-    <div class="article-summary-inner">
-        
-        <a href="/2020/07/02/second/" class="thumbnail">
-    
-    
-        <span style="background-image:url(C:/Users/Administrator/AppData/Local/YNote/data/qq603F12696BD3B57EFA011C366B93AE8F/db1bed93290b4791a8d98f1706a78eb7/02051747387.jpeg)" alt="Java多线程学习" class="thumbnail-image"></span>
-    
-    
-        
-<span class="comment-counter">
-    <i class="fa fa-comments-o"></i>
-    
-        <span class="disqus-comment-count" data-disqus-identifier="" data-disqus-url="https://conanisbest.github.io/2020/07/02/second/">0</span>
-    
-</span>
-
-
-    
-</a>
-
-        
-        <div class="article-meta">
-            <div class="category">
-            
-            </div>
-            <div class="date"><time datetime="2020-07-02T07:18:50.000Z" itemprop="datePublished">2020-07-02</time></div>
-        </div>
-        
-    
-        <h1 class="article-title" itemprop="name">
-        <a href="/2020/07/02/second/">Java多线程学习</a>
-        </h1>
-    
-
-        <p class="article-excerpt">
-            Java总结篇系列：Java多线程（一）
-多线程作为Java中很重要的一个知识点，在此还是有必要总结一下的。
-一.线程的生命周期及五种基本状态
-关于Java中线程的生命周期，首先看一下下面这张较为经典的图：
-
-上图中基本上囊括了Java中多线程各重要知识点。掌握了上图中的各知识点，Java中的多线程也就基本上掌握了。主要包括：
-Java线程具有五种基本状态
-新建状态（New）：当线程对象对创建后，
-        </p>
-    </div>
-</article>
-    
-        </div>
-    
-
-    
-    
-    
-    
-        <div class="article-row">
-    
-        <article class="article article-summary">
-    <div class="article-summary-inner">
-        
-        <a href="/2020/07/02/first/" class="thumbnail">
-    
-    
-        <span class="thumbnail-image thumbnail-none"></span>
-    
-    
-        
-<span class="comment-counter">
-    <i class="fa fa-comments-o"></i>
-    
-        <span class="disqus-comment-count" data-disqus-identifier="" data-disqus-url="https://conanisbest.github.io/2020/07/02/first/">0</span>
-    
-</span>
-
-
-    
-</a>
-
-        
-        <div class="article-meta">
-            <div class="category">
-            
-            </div>
-            <div class="date"><time datetime="2020-07-02T06:34:39.000Z" itemprop="datePublished">2020-07-02</time></div>
-        </div>
-        
-    
-        <h1 class="article-title" itemprop="name">
-        <a href="/2020/07/02/first/">Java高级特性——反射</a>
-        </h1>
-    
-
-        <p class="article-excerpt">
-            Java高级特性——反射
-peter_RD_nj
-122018.08.27 16:40:42字数 1,009阅读 151,828
-概述
-定义
-JAVA反射机制是在运行状态中，对于任意一个类，都能够知道这个类的所有属性和方法；对于任意一个对象，都能够调用它的任意方法和属性；这种动态获取信息以及动态调用对象方法的功能称为java语言的反射机制。
-用途
-在日常的第三方应用开发过程中，经常会遇到某个类的某
-        </p>
-    </div>
-</article>
-    
-
-    
-    
-    
-    
-        <article class="article article-summary">
-    <div class="article-summary-inner">
-        
-        <a href="/2020/07/02/hello-world/" class="thumbnail">
-    
-    
-        <span class="thumbnail-image thumbnail-none"></span>
-    
-    
-        
-<span class="comment-counter">
-    <i class="fa fa-comments-o"></i>
-    
-        <span class="disqus-comment-count" data-disqus-identifier="" data-disqus-url="https://conanisbest.github.io/2020/07/02/hello-world/">0</span>
-    
-</span>
-
-
-    
-</a>
-
-        
-        <div class="article-meta">
-            <div class="category">
-            
-            </div>
-            <div class="date"><time datetime="2020-07-02T02:48:02.610Z" itemprop="datePublished">2020-07-02</time></div>
-        </div>
-        
-    
-        <h1 class="article-title" itemprop="name">
-        <a href="/2020/07/02/hello-world/">名侦探柯基Zz</a>
-        </h1>
-    
-
-        <p class="article-excerpt">
-            Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub.
-Quick
-        </p>
-    </div>
-</article>
-    
-        </div>
-    
-
-
-    </div></section>
+    </section>
 
 
 
@@ -542,6 +363,19 @@ Quick
             
         </ul>
     </div>
+    
+        
+<nav id="article-nav">
+    
+    
+        <a href="/2020/07/02/four/" id="article-nav-older" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">older</strong>
+        <p class="article-nav-title">hibernate工作原理及作用</p>
+        <i class="icon fa fa-chevron-left" id="icon-chevron-left"></i>
+        </a>
+    
+</nav>
+
     
     <div class="widgets-container">
         
@@ -732,11 +566,13 @@ Quick
     var disqus_shortname = 'hexo-theme-hueman';
     
     
+    var disqus_url = 'https://conanisbest.github.io/2020/07/02/five/';
+    
     (function() {
     var dsq = document.createElement('script');
     dsq.type = 'text/javascript';
     dsq.async = true;
-    dsq.src = '//' + disqus_shortname + '.disqus.com/count.js';
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
     (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
     })();
     </script>

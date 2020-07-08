@@ -377,7 +377,7 @@
 <p>如果想要运行一个开发好的Java程序，计算机中只需要安装JRE即可。</p>
 <p><strong>JDK</strong><br>Java Development Kit是提供给Java开发人员使用的，其中包含了Java的开发工具，也包括了JRE。所以安装了JDK，就无需再单独安装JRE了。其中的开发工具：编译工具(javac.exe)，打包工具(jar.exe)等</p>
 <p><strong>JVM&amp;JRE&amp;JDK关系图</strong></p>
-<p><img src="https://mmbiz.qpic.cn/mmbiz_png/rAMaszgAyWpblibxHNficQAaicBURw5uxaYRxOOVacKtycFKG8VliaA5u2PferEA1iaDTic7etblzDklp8jHWDkEDdlA/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1" alt="img"></p>
+<p><img src="/2020/07/07/java%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/G:%5Csoftware%5Chexo%5Csource_posts%5Cjava%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%5C1" alt="img"></p>
 <h3 id="什么是跨平台性？原理是什么"><a href="#什么是跨平台性？原理是什么" class="headerlink" title="什么是跨平台性？原理是什么"></a><strong>什么是跨平台性？原理是什么</strong></h3><p>所谓跨平台性，是指java语言编写的程序，一次编译后，可以在多个系统平台上运行。</p>
 <p>实现原理：Java程序是通过java虚拟机在系统平台上运行的，只要该系统可以安装相应的java虚拟机，该系统就可以运行java程序。</p>
 <h3 id="Java语言有哪些特点"><a href="#Java语言有哪些特点" class="headerlink" title="Java语言有哪些特点"></a><strong>Java语言有哪些特点</strong></h3><p>简单易学（Java语言的语法与C语言和C++语言很接近）</p>
@@ -434,7 +434,7 @@
 </li>
 </ul>
 <p><strong>Java基本数据类型图</strong></p>
-<p><img src="https://mmbiz.qpic.cn/mmbiz_png/rAMaszgAyWpblibxHNficQAaicBURw5uxaYiaeFD6IjtjE65ia6gLV6UzwtGMibia0qvtxzNnC1cPGR5AbcNYCXT64aEA/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1" alt="img"></p>
+<p><img src="/2020/07/07/java%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/G:%5Csoftware%5Chexo%5Csource_posts%5Cjava%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%5C2" alt="img"></p>
 <h4 id="switch-是否能作用在-byte-上，是否能作用在-long-上，是否能作用在-String-上"><a href="#switch-是否能作用在-byte-上，是否能作用在-long-上，是否能作用在-String-上" class="headerlink" title="switch 是否能作用在 byte 上，是否能作用在 long 上，是否能作用在 String 上"></a><strong>switch 是否能作用在 byte 上，是否能作用在 long 上，是否能作用在 String 上</strong></h4><p>在 Java 5 以前，switch(expr)中，expr 只能是 byte、short、char、int。从 Java5 开始，Java 中引入了枚举类型，expr 也可以是 enum 类型，从 Java 7 开始，expr 还可以是字符串（String），但是长整型（long）在目前所有的版本中都是不可以的。</p>
 <h4 id="用最有效率的方法计算-2-乘以-8"><a href="#用最有效率的方法计算-2-乘以-8" class="headerlink" title="用最有效率的方法计算 2 乘以 8"></a><strong>用最有效率的方法计算 2 乘以 8</strong></h4><p>2 &lt;&lt; 3（左移 3 位相当于乘以 2 的 3 次方，右移 3 位相当于除以 2 的 3 次方）。</p>
 <h4 id="Math-round-11-5-等于多少？Math-round-11-5-等于多少"><a href="#Math-round-11-5-等于多少？Math-round-11-5-等于多少" class="headerlink" title="Math.round(11.5) 等于多少？Math.round(-11.5)等于多少"></a><strong>Math.round(11.5) 等于多少？Math.round(-11.5)等于多少</strong></h4><p>Math.round(11.5)的返回值是 12，Math.round(-11.5)的返回值是-11。四舍五入的原理是在参数上加 0.5 然后进行下取整。</p>
@@ -456,7 +456,7 @@
 <p><strong>分类</strong></p>
 <p>private : 在同一类内可见。使用对象：变量、方法。注意：不能修饰类（外部类）<br>default (即缺省，什么也不写，不使用任何关键字）: 在同一包内可见，不使用任何修饰符。使用对象：类、接口、变量、方法。<br>protected : 对同一包内的类和所有子类可见。使用对象：变量、方法。注意：不能修饰类（外部类）。<br>public : 对所有类可见。使用对象：类、接口、变量、方法</p>
 <p><strong>访问修饰符图</strong></p>
-<p><img src="https://mmbiz.qpic.cn/mmbiz_png/rAMaszgAyWpblibxHNficQAaicBURw5uxaYHH3PwsT3uv5eYw341sEcibLqQMdVtchPRnmmSGAuXKWZyGTlzhvibozA/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1" alt="img"></p>
+<p><img src="/2020/07/07/java%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/G:%5Csoftware%5Chexo%5Csource_posts%5Cjava%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%5C3" alt="img"></p>
 <h3 id="运算符"><a href="#运算符" class="headerlink" title="运算符"></a><strong>运算符</strong></h3><h4 id="amp-和-amp-amp-的区别"><a href="#amp-和-amp-amp-的区别" class="headerlink" title="&amp;和&amp;&amp;的区别"></a><strong>&amp;和&amp;&amp;的区别</strong></h4><p>&amp;运算符有两种用法：(1)按位与；(2)逻辑与。</p>
 <p>&amp;&amp;运算符是短路与运算。逻辑与跟短路与的差别是非常巨大的，虽然二者都要求运算符左右两端的布尔值都是true 整个表达式的值才是 true。&amp;&amp;之所以称为短路运算，是因为如果&amp;&amp;左边的表达式的值是 false，右边的表达式会被直接短路掉，不会进行运算。</p>
 <p>注意：逻辑或运算符（|）和短路或运算符（||）的差别也是如此。</p>
@@ -818,7 +818,7 @@
 
 <p><strong>解析</strong>：</p>
 <p>交换之前：</p>
-<p><img src="https://mmbiz.qpic.cn/mmbiz_png/rAMaszgAyWpblibxHNficQAaicBURw5uxaYWryWicYmUV9SATxicgiaJSYgicqA7DrZSyLmvMEBGXIm3U2zeucgb8yaYQ/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1" alt="img"></p>
+<p><img src="/2020/07/07/java%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/G:%5Csoftware%5Chexo%5Csource_posts%5Cjava%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%5C4" alt="img"></p>
 <p>通过上面两张图可以很清晰的看出： <strong>方法并没有改变存储在变量 s1 和 s2 中的对象引用。swap方法的参数x和y被初始化为两个对象引用的拷贝，这个方法交换的是这两个拷贝</strong></p>
 <h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a><strong>总结</strong></h3><p>Java程序设计语言对对象采用的不是引用调用，实际上，对象引用是按值传递的。</p>
 <p>下面再总结一下Java中方法参数的使用情况：</p>
@@ -850,9 +850,9 @@
 <li>OutputStream/Writer: 所有输出流的基类，前者是字节输出流，后者是字符输出流。</li>
 </ul>
 <p>按操作方式分类结构图：</p>
-<p><img src="https://mmbiz.qpic.cn/mmbiz_jpg/rAMaszgAyWpblibxHNficQAaicBURw5uxaY0c1KTiaia1oCJn3CMSict7ZOCET2GwvxkMl8WnH9eCEobicoDkuEAOTsmw/640?wx_fmt=jpeg&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1" alt="img"></p>
+<p><img src="/2020/07/07/java%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/G:%5Csoftware%5Chexo%5Csource_posts%5Cjava%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%5C5" alt="img"></p>
 <p>按操作对象分类结构图：</p>
-<p><img src="https://mmbiz.qpic.cn/mmbiz_jpg/rAMaszgAyWpblibxHNficQAaicBURw5uxaYBiaj1tlmtZGABnibCqCDgMJGI4HkeibyFfiaowGcuL1jdQEL9mwza3bIag/640?wx_fmt=jpeg&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1" alt="img"></p>
+<p><img src="/2020/07/07/java%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/G:%5Csoftware%5Chexo%5Csource_posts%5Cjava%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%5C6" alt="img"></p>
 <h3 id="BIO-NIO-AIO-有什么区别"><a href="#BIO-NIO-AIO-有什么区别" class="headerlink" title="BIO,NIO,AIO 有什么区别?"></a><strong>BIO,NIO,AIO 有什么区别?</strong></h3><p>简答</p>
 <ul>
 <li>BIO：Block IO 同步阻塞式 IO，就是我们平常使用的传统 IO，它的特点是模式简单使用方便，并发处理能力低。</li>

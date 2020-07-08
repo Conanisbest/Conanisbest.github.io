@@ -2,7 +2,7 @@
 <search>
   <entry>
     <title>Java高级特性——反射</title>
-    <url>/2020/07/02/first/</url>
+    <url>/blog/2020/07/02/first/</url>
     <content><![CDATA[<p><strong>Java高级特性——反射</strong></p>
 <p><a href="https://www.jianshu.com/u/2d3edce151d3" target="_blank" rel="noopener">peter_RD_nj</a></p>
 <p>122018.08.27 16:40:42字数 1,009阅读 151,828</p>
@@ -357,7 +357,7 @@
   </entry>
   <entry>
     <title>解决java导出文件时文件名中文不显示/乱码</title>
-    <url>/2020/07/02/five/</url>
+    <url>/blog/2020/07/02/five/</url>
     <content><![CDATA[<p><strong>解决java导出文件时文件名中文不显示/乱码</strong></p>
 <p>直接把中文文件名改为iso-8859-1就可以了~</p>
 <p>response.setHeader(“Content-Disposition”, “attachment;filename=”     + new String(fileName.getBytes(),”iso-8859-1”) + “.xls”);</p>
@@ -368,7 +368,7 @@
   </entry>
   <entry>
     <title>hibernate工作原理及作用</title>
-    <url>/2020/07/02/four/</url>
+    <url>/blog/2020/07/02/four/</url>
     <content><![CDATA[<p><strong>hibernate工作原理及作用</strong></p>
 <p>2015年08月04日 15:00:17 <a href="https://me.csdn.net/u010197033" target="_blank" rel="noopener">进击的LTQ</a> 阅读数 54747</p>
 <p><strong>转载自 <a href="http://www.cnblogs.com/dashi/p/3597969.html#commentform" target="_blank" rel="noopener">http://www.cnblogs.com/dashi/p/3597969.html#commentform</a></strong></p>
@@ -450,7 +450,7 @@
   </entry>
   <entry>
     <title>Java多线程学习</title>
-    <url>/2020/07/02/second/</url>
+    <url>/blog/2020/07/02/second/</url>
     <content><![CDATA[<p><a href="https://www.cnblogs.com/lwbqqyumidi/p/3804883.html" target="_blank" rel="noopener"><strong>Java总结篇系列：Java多线程（一）</strong></a></p>
 <p>多线程作为Java中很重要的一个知识点，在此还是有必要总结一下的。</p>
 <p><strong>一.线程的生命周期及五种基本状态</strong></p>
@@ -643,7 +643,7 @@
   </entry>
   <entry>
     <title>JVM 发生 OOM 的 8 种原因、及解决办法</title>
-    <url>/2020/07/02/three/</url>
+    <url>/blog/2020/07/02/three/</url>
     <content><![CDATA[<p>JVM 发生 OOM（out of memory 内存溢出） 的 8 种原因、及解决办法</p>
 <p><img src="/2020/07/02/three/Users/Administrator/AppData/Local/YNote/data/qq603F12696BD3B57EFA011C366B93AE8F/907d65c92f7e465c8276609ee42bf528/640.webp" alt="img"></p>
 <p><img src="/2020/07/02/three/Users/Administrator/AppData/Local/YNote/data/qq603F12696BD3B57EFA011C366B93AE8F/901a96b40894432389f62ab463cc4611/640.webp" alt="img"></p>
@@ -766,7 +766,7 @@
   </entry>
   <entry>
     <title>辨析 Sass 中的 Map 和 List</title>
-    <url>/2019/10/21/demo/</url>
+    <url>/blog/2019/10/21/demo/</url>
     <content><![CDATA[<p>如果你使用过 Sass 3.3 之前的版本，那么你一定对那段时光颇有感触，那时候没有现如今这么好的条件，那时候的 Map 还只能用多重列表（lists of list）来模拟。多重列表可以实现复杂数据的嵌套定义，但却不是以键值对的形式实现的，所有当我们需要获取其中特定的某一项时就会比较麻烦。Map 这种数据类型天生就是基于键值对的形式，非常便于组织数据。</p>
 <p>自从可以使用 Map 之后，开发者们开始毫无顾忌地定义 Map 存储数据，比如断点宽度、颜色值、栅格布局等等响应式排版的细节，都被一股脑的塞进了 Map 中。</p>
 <p>那么，有了 Map 之后，我们还有必要使用 List 吗？可能某些人会觉得为了保持向后兼容应该继续使用多重列表模拟 Map，因为可能有些开发者仍然在使用老版本的 Sass 编译器，但实际上，这是多此一举了，Sass 的版本通常由 <code>package.json</code> 或者其他同类型的项目配置文件所控制，往往只需一条命令（<code>gem update sass</code>）即可更新 Sass 的版本，因此基本上无需考虑对老版本的兼容问题。</p>
@@ -872,7 +872,7 @@
   </entry>
   <entry>
     <title>工作流</title>
-    <url>/2020/07/03/%E5%B7%A5%E4%BD%9C%E6%B5%81/</url>
+    <url>/blog/2020/07/03/%E5%B7%A5%E4%BD%9C%E6%B5%81/</url>
     <content><![CDATA[<p>博主更新中…</p>
 ]]></content>
       <tags>
@@ -881,7 +881,7 @@
   </entry>
   <entry>
     <title>java基础知识</title>
-    <url>/2020/07/07/java%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/</url>
+    <url>/blog/2020/07/07/java%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/</url>
     <content><![CDATA[<p>本文知识点目录</p>
 <ul>
 <li><p>Java概述</p>
@@ -1732,7 +1732,7 @@
   </entry>
   <entry>
     <title>jvm之java类加载机制和类加载器(ClassLoader)的详解</title>
-    <url>/2020/07/08/java%E7%B1%BB%E5%8A%A0%E8%BD%BD%E5%99%A8/</url>
+    <url>/blog/2020/07/08/java%E7%B1%BB%E5%8A%A0%E8%BD%BD%E5%99%A8/</url>
     <content><![CDATA[<p>jvm之java类加载机制和类加载器(ClassLoader)的详解<br>分类专栏： java jvm<br>      当程序主动使用某个类时，如果该类还未被加载到内存中，则JVM会通过加载、连接、初始化3个步骤来对该类进行初始化。如果没有意外，JVM将会连续完成3个步骤，所以有时也把这个3个步骤统称为类加载或类初始化。</p>
 <p><img src="/2020/07/08/java%E7%B1%BB%E5%8A%A0%E8%BD%BD%E5%99%A8/1.jpg" alt="1">                       </p>
 <p>一、类加载过程<br>1.加载<br>    加载指的是将类的class文件读入到内存，并为之创建一个java.lang.Class对象，也就是说，当程序中使用任何类时，系统都会为之建立一个java.lang.Class对象。</p>

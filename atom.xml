@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://conanisbest.github.io/"/>
-  <updated>2020-07-13T08:36:51.843Z</updated>
+  <updated>2020-07-08T07:33:15.312Z</updated>
   <id>https://conanisbest.github.io/</id>
   
   <author>
@@ -15,21 +15,6 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
-  
-  <entry>
-    <title>categories</title>
-    <link href="https://conanisbest.github.io/2020/07/13/categories/"/>
-    <id>https://conanisbest.github.io/2020/07/13/categories/</id>
-    <published>2020-07-13T08:36:51.000Z</published>
-    <updated>2020-07-13T08:36:51.843Z</updated>
-    
-    <summary type="html">
-    
-    </summary>
-    
-    
-    
-  </entry>
   
   <entry>
     <title>jvm之java类加载机制和类加载器(ClassLoader)的详解</title>

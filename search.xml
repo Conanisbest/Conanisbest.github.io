@@ -1929,4 +1929,74 @@
         <tag>Windows</tag>
       </tags>
   </entry>
+  <entry>
+    <title>序列化和反序列化的详解</title>
+    <url>/2020/07/24/xuliehua/</url>
+    <content><![CDATA[<h4 id="一、基本概念"><a href="#一、基本概念" class="headerlink" title="一、基本概念"></a>一、基本概念</h4><p>1、序列化和反序列化的定义：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">(1)Java序列化就是指把Java对象转换为字节序列的过程</span><br><span class="line"></span><br><span class="line">    Java反序列化就是指把字节序列恢复为Java对象的过程。</span><br></pre></td></tr></table></figure>
+
+<p>   (2)序列化最重要的作用：在传递和保存对象时.保证对象的完整性和可传递性。对象转换为有序字节流,以便在网络上传输或者保存在本地文件中。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">反序列化的最重要的作用：根据字节流中保存的对象状态及描述信息，通过反序列化重建对象。</span><br></pre></td></tr></table></figure>
+
+<p>   总结：核心作用就是对象状态的保存和重建。（整个过程核心点就是字节流中所保存的对象状态及描述信息）</p>
+<p>2、json/xml的数据传递：</p>
+<p> 在数据传输(也可称为网络传输)前，先通过序列化工具类将Java对象序列化为json/xml文件。</p>
+<p>在数据传输(也可称为网络传输)后，再将json/xml文件反序列化为对应语言的对象</p>
+<p>3、序列化优点：</p>
+<p> ①将对象转为字节流存储到硬盘上，当JVM停机的话，字节流还会在硬盘上默默等待，等待下一次JVM的启动，把序列化的对象，通过反序列化为原来的对象，并且序列化的二进制序列能够减少存储空间（永久性保存对象）。</p>
+<p> ②序列化成字节流形式的对象可以进行网络传输(二进制形式)，方便了网络传输。</p>
+<p> ③通过序列化可以在进程间传递对象。</p>
+<p>4、序列化算法需要做的事：</p>
+<p>  ① 将对象实例相关的类元数据输出。</p>
+<p>  ② 递归地输出类的超类描述直到不再有超类。</p>
+<p>  ③ 类元数据输出完毕后，从最顶端的超类开始输出对象实例的实际数据值。</p>
+<p>  ④ 从上至下递归输出实例的数据。</p>
+<h4 id="二、Java实现序列化和反序列化的过程"><a href="#二、Java实现序列化和反序列化的过程" class="headerlink" title="二、Java实现序列化和反序列化的过程"></a>二、Java实现序列化和反序列化的过程</h4><p>   1、实现序列化的必备要求：</p>
+<pre><code>只有实现了Serializable或者Externalizable接口的类的对象才能被序列化为字节序列。（不是则会抛出异常） </code></pre><p>   2、JDK中序列化和反序列化的API：</p>
+<pre><code> ①java.io.ObjectInputStream：对象输入流。
+
+     该类的readObject()方法从输入流中读取字节序列，然后将字节序列反序列化为一个对象并返回。
+
+②java.io.ObjectOutputStream：对象输出流。
+
+     该类的writeObject(Object obj)方法将将传入的obj对象进行序列化，把得到的字节序列写入到目标输出流中进行输出。</code></pre><p> 3、实现序列化和反序列化的三种实现：</p>
+<p>  ①若Student类仅仅实现了Serializable接口，则可以按照以下方式进行序列化和反序列化。</p>
+<pre><code>ObjectOutputStream采用默认的序列化方式，对Student对象的非transient的实例变量进行序列化。 
+ObjcetInputStream采用默认的反序列化方式，对Student对象的非transient的实例变量进行反序列化。</code></pre><p>  ②若Student类仅仅实现了Serializable接口，并且还定义了readObject(ObjectInputStream in)和writeObject(ObjectOutputSteam out)，则采用以下方式进行序列化与反序列化。</p>
+<pre><code>ObjectOutputStream调用Student对象的writeObject(ObjectOutputStream out)的方法进行序列化。 
+ObjectInputStream会调用Student对象的readObject(ObjectInputStream in)的方法进行反序列化。</code></pre><p>  ③若Student类实现了Externalnalizable接口，且Student类必须实现readExternal(ObjectInput in)和writeExternal(ObjectOutput out)方法，则按照以下方式进行序列化与反序列化。</p>
+<pre><code>ObjectOutputStream调用Student对象的writeExternal(ObjectOutput out))的方法进行序列化。 
+ObjectInputStream会调用Student对象的readExternal(ObjectInput in)的方法进行反序列化。</code></pre><p>4、序列化和反序列化代码示例</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SerializableTest</span> </span>&#123;</span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> IOException, ClassNotFoundException </span>&#123;</span><br><span class="line">            <span class="comment">//序列化</span></span><br><span class="line">            FileOutputStream fos = <span class="keyword">new</span> FileOutputStream(<span class="string">"object.out"</span>);</span><br><span class="line">            ObjectOutputStream oos = <span class="keyword">new</span> ObjectOutputStream(fos);</span><br><span class="line">            Student student1 = <span class="keyword">new</span> Student(<span class="string">"lihao"</span>, <span class="string">"wjwlh"</span>, <span class="string">"21"</span>);</span><br><span class="line">            oos.writeObject(student1);</span><br><span class="line">            oos.flush();</span><br><span class="line">            oos.close();</span><br><span class="line">            <span class="comment">//反序列化</span></span><br><span class="line">            FileInputStream fis = <span class="keyword">new</span> FileInputStream(<span class="string">"object.out"</span>);</span><br><span class="line">            ObjectInputStream ois = <span class="keyword">new</span> ObjectInputStream(fis);</span><br><span class="line">            Student student2 = (Student) ois.readObject();</span><br><span class="line">            System.out.println(student2.getUserName()+ <span class="string">" "</span> +</span><br><span class="line">                    student2.getPassword() + <span class="string">" "</span> + student2.getYear());</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+<p>​<br>​                                                                          </p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Student</span> <span class="keyword">implements</span> <span class="title">Serializable</span></span>&#123;    </span><br><span class="line"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">long</span> serialVersionUID = -<span class="number">6060343040263809614L</span>;   </span><br><span class="line">                                                                      </span><br><span class="line"><span class="keyword">private</span> String userName;                                              </span><br><span class="line"><span class="keyword">private</span> String password;                                              </span><br><span class="line"><span class="keyword">private</span> String year;                                                  </span><br><span class="line">                                                                      </span><br><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">getUserName</span><span class="params">()</span> </span>&#123;                                         </span><br><span class="line">    <span class="keyword">return</span> userName;                                                  </span><br><span class="line">&#125;                                                                     </span><br><span class="line">                                                                      </span><br><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">getPassword</span><span class="params">()</span> </span>&#123;                                         </span><br><span class="line">    <span class="keyword">return</span> password;                                                  </span><br><span class="line">&#125;                                                                     </span><br><span class="line">                                                                      </span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setUserName</span><span class="params">(String userName)</span> </span>&#123;                            </span><br><span class="line">    <span class="keyword">this</span>.userName = userName;                                         </span><br><span class="line">&#125;                                                                     </span><br><span class="line">                                                                      </span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setPassword</span><span class="params">(String password)</span> </span>&#123;                            </span><br><span class="line">    <span class="keyword">this</span>.password = password;                                         </span><br><span class="line">&#125;                                                                     </span><br><span class="line">                                                                      </span><br><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">getYear</span><span class="params">()</span> </span>&#123;                                             </span><br><span class="line">    <span class="keyword">return</span> year;                                                      </span><br><span class="line">&#125;                                                                     </span><br><span class="line">                                                                      </span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setYear</span><span class="params">(String year)</span> </span>&#123;                                    </span><br><span class="line">    <span class="keyword">this</span>.year = year;                                                 </span><br><span class="line">&#125;                                                                     </span><br><span class="line">                                                                      </span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="title">Student</span><span class="params">(String userName, String password, String year)</span> </span>&#123;       </span><br><span class="line">    <span class="keyword">this</span>.userName = userName;                                         </span><br><span class="line">    <span class="keyword">this</span>.password = password;                                         </span><br><span class="line">    <span class="keyword">this</span>.year = year;                                                 </span><br><span class="line">&#125;    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p> ①序列化图示</p>
+<p><img src="/2020/07/24/xuliehua/1.png" alt></p>
+<p>②反序列化图示</p>
+<p><img src="/2020/07/24/xuliehua/2.png" alt></p>
+<h4 id="三、序列化和反序列化的注意点："><a href="#三、序列化和反序列化的注意点：" class="headerlink" title="三、序列化和反序列化的注意点："></a>三、序列化和反序列化的注意点：</h4><p>①序列化时，只对对象的状态进行保存，而不管对象的方法；</p>
+<p>②当一个父类实现序列化，子类自动实现序列化，不需要显式实现Serializable接口；</p>
+<p>③当一个对象的实例变量引用其他对象，序列化该对象时也把引用对象进行序列化；</p>
+<p>④并非所有的对象都可以序列化，至于为什么不可以，有很多原因了，比如：</p>
+<p>安全方面的原因，比如一个对象拥有private，public等field，对于一个要传输的对象，比如写到文件，或者进行RMI传输等等，在序列化进行传输的过程中，这个对象的private等域是不受保护的；</p>
+<p>资源分配方面的原因，比如socket，thread类，如果可以序列化，进行传输或者保存，也无法对他们进行重新的资源分配，而且，也是没有必要这样实现；</p>
+<p>⑤声明为static和transient类型的成员数据不能被序列化。因为static代表类的状态，transient代表对象的临时数据。</p>
+<p>⑥序列化运行时使用一个称为 serialVersionUID 的版本号与每个可序列化类相关联，该序列号在反序列化过程中用于验证序列化对象的发送者和接收者是否为该对象加载了与序列化兼容的类。为它赋予明确的值。显式地定义serialVersionUID有两种用途：</p>
+<p>在某些场合，希望类的不同版本对序列化兼容，因此需要确保类的不同版本具有相同的serialVersionUID；</p>
+<p>在某些场合，不希望类的不同版本对序列化兼容，因此需要确保类的不同版本具有不同的serialVersionUID。</p>
+<p>⑦Java有很多基础类已经实现了serializable接口，比如String,Vector等。但是也有一些没有实现serializable接口的；</p>
+<p>⑧如果一个对象的成员变量是一个对象，那么这个对象的数据成员也会被保存！这是能用序列化解决深拷贝的重要原因；</p>
+<p>注意：浅拷贝请使用Clone接口的原型模式。<br>————————————————<br>版权声明：本文为CSDN博主「tree_ifconfig」的原创文章，遵循CC 4.0 BY-SA版权协议，转载请附上原文出处链接及本声明。<br>原文链接：<a href="https://blog.csdn.net/tree_ifconfig/java/article/details/82766587" target="_blank" rel="noopener">https://blog.csdn.net/tree_ifconfig/java/article/details/82766587</a></p>
+]]></content>
+      <categories>
+        <category>study</category>
+      </categories>
+      <tags>
+        <tag>java</tag>
+        <tag>序列化</tag>
+      </tags>
+  </entry>
 </search>

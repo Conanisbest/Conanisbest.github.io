@@ -107,6 +107,173 @@
     
     
     <article
+  id="post-three"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2020/07/02/three/"
+    >JVM 发生 OOM 的 8 种原因、及解决办法</a> 
+</h2>
+ 
+
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2020/07/02/three/" class="article-date">
+  <time datetime="2020-07-02T07:26:13.000Z" itemprop="datePublished">2020-07-02</time>
+</a> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/java/">java</a>
+  </div>
+   
+    </div>
+      
+    <div class="article-entry" itemprop="articleBody">
+       
+  <p>JVM 发生 OOM（out of memory 内存溢出） 的 8 种原因、及解决办法</p>
+<p><img src="/2020/07/02/three/Users/Administrator/AppData/Local/YNote/data/qq603F12696BD3B57EFA011C366B93AE8F/907d65c92f7e465c8276609ee42bf528/640.webp" alt="img"></p>
+<p><img src="/2020/07/02/three/1.png" alt="img"></p>
+<p>来源：<a href="http://www.importnew.com/author/tangyouhua" target="_blank" rel="noopener">www.importnew.com/author/tangyouhua</a></p>
+<p><strong>1. Java 堆空间</strong></p>
+<p><strong>发生频率：</strong>5颗星</p>
+<p><strong>造成原因</strong></p>
+<ul>
+<li>无法在 Java 堆中分配对象</li>
+<li>吞吐量增加</li>
+<li>应用程序无意中保存了对象引用，对象无法被 GC 回收</li>
+<li>应用程序过度使用 finalizer。finalizer 对象不能被 GC 立刻回收。finalizer 由结束队列服务的守护线程调用，有时 finalizer 线程的处理能力无法跟上结束队列的增长</li>
+</ul>
+<p><strong>解决方案</strong></p>
+<ul>
+<li>使用 -Xmx 增加堆大小</li>
+<li>修复应用程序中的内存泄漏</li>
+</ul>
+<p><strong>2. GC 开销超过限制</strong></p>
+<p><strong>发生频率：</strong>5颗星</p>
+<p><strong>造成原因</strong></p>
+<ul>
+<li>Java 进程98%的时间在进行垃圾回收，恢复了不到2%的堆空间，最后连续5个（编译时常量）垃圾回收一直如此。</li>
+</ul>
+<p><strong>解决方案</strong></p>
+<ul>
+<li>使用 -Xmx 增加堆大小</li>
+<li>使用 -XX:-UseGCOverheadLimit 取消 GC 开销限制</li>
+<li>修复应用程序中的内存泄漏</li>
+</ul>
+<p><strong>3. 请求的数组大小超过虚拟机限制</strong></p>
+<p><strong>发生频率：</strong>2颗星</p>
+<p><strong>造成原因</strong></p>
+<ul>
+<li>应用程序试图分配一个超过堆大小的数组</li>
+</ul>
+<p><strong>解决方案</strong></p>
+<ul>
+<li>使用 -Xmx 增加堆大小</li>
+<li>修复应用程序中分配巨大数组的 bug</li>
+</ul>
+<p><strong>4. Perm gen 空间</strong></p>
+<p><strong>发生频率：</strong>3颗星</p>
+<p><strong>造成原因</strong></p>
+<p>Perm gen 空间包含：</p>
+<ul>
+<li>类的名字、字段、方法</li>
+<li>与类相关的对象数组和类型数组</li>
+<li>JIT 编译器优化</li>
+</ul>
+<p>当 Perm gen 空间用尽时，将抛出异常。</p>
+<p><strong>解决方案</strong></p>
+<ul>
+<li>使用 -XX: MaxPermSize 增加 Permgen 大小</li>
+<li>不重启应用部署应用程序可能会导致此问题。重启 JVM 解决</li>
+</ul>
+<p><strong>5. Metaspace</strong></p>
+<p><strong>发生频率：</strong>3颗星</p>
+<p><strong>造成原因</strong></p>
+<ul>
+<li>从 Java 8 开始 Perm gen 改成了 Metaspace，在本机内存中分配 class 元数据（称为 metaspace）。如果 metaspace 耗尽，则抛出异常</li>
+</ul>
+<p><strong>解决方案</strong></p>
+<ul>
+<li>通过命令行设置 -XX: MaxMetaSpaceSize 增加 metaspace 大小</li>
+<li>取消 -XX: maxmetsspacedize</li>
+<li>减小 Java 堆大小,为 MetaSpace 提供更多的可用空间</li>
+<li>为服务器分配更多的内存</li>
+<li>可能是应用程序 bug，修复 bug</li>
+</ul>
+<p><strong>6. 无法新建本机线程</strong></p>
+<p><strong>发生频率：</strong>5颗星</p>
+<p><strong>造成原因</strong></p>
+<ul>
+<li>内存不足，无法创建新线程。由于线程在本机内存中创建，报告这个错误表明本机内存空间不足</li>
+</ul>
+<p><strong>解决方案</strong></p>
+<ul>
+<li><p>为机器分配更多的内存</p>
+</li>
+<li><p>减少 Java 堆空间</p>
+</li>
+<li><p>修复应用程序中的线程泄漏。</p>
+</li>
+<li><p>增加操作系统级别的限制</p>
+</li>
+<li><ul>
+<li>ulimit -a</li>
+<li>用户进程数增大 (-u) 1800</li>
+</ul>
+</li>
+<li><p>使用 -Xss 减小线程堆栈大小</p>
+</li>
+</ul>
+<p><strong>7. 杀死进程或子进程</strong></p>
+<p><strong>发生频率：</strong>1颗星</p>
+<p><strong>造成原因</strong></p>
+<ul>
+<li>内核任务：内存不足结束器，在可用内存极低的情况下会杀死进程</li>
+</ul>
+<p><strong>解决方案</strong></p>
+<ul>
+<li>将进程迁移到不同的机器上</li>
+<li>给机器增加更多内存</li>
+</ul>
+<p>与其他 OOM 错误不同，这是由操作系统而非 JVM 触发的。</p>
+<p><strong>8. 发生 stack_trace_with_native_method</strong></p>
+<p><strong>发生频率：</strong>1颗星</p>
+<p><strong>造成原因</strong></p>
+<ul>
+<li>本机方法（native method）分配失败</li>
+<li>打印的堆栈跟踪信息，最顶层的帧是本机方法</li>
+</ul>
+<p><strong>解决方案</strong></p>
+<p>使用操作系统本地工具进行诊断</p>
+ 
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <footer class="article-footer">
+       
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JVM/" rel="tag">JVM</a></li></ul>
+
+    </footer>
+  </div>
+
+    
+ 
+   
+</article>
+
+    
+    <article
   id="post-second"
   class="article article-type-post"
   itemscope

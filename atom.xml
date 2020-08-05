@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://conanisbest.github.io/"/>
-  <updated>2020-07-30T07:29:44.236Z</updated>
+  <updated>2020-08-05T01:34:43.483Z</updated>
   <id>https://conanisbest.github.io/</id>
   
   <author>
@@ -15,6 +15,33 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>23种设计模式及实现原理</title>
+    <link href="https://conanisbest.github.io/2020/08/05/sjms/"/>
+    <id>https://conanisbest.github.io/2020/08/05/sjms/</id>
+    <published>2020-08-05T01:28:41.000Z</published>
+    <updated>2020-08-05T01:34:43.483Z</updated>
+    
+    <content type="html"><![CDATA[<p><a href="https://www.cnblogs.com/Jenings/articles/11994446.html" target="_blank" rel="noopener">23种设计模式及实现原理</a></p><p><strong>一、常用23种设计模式原理图</strong></p><p><img src="/2020/08/05/sjms/1.png" alt></p><p><strong>二、何为设计模式，为什么需要</strong></p><p> 设计模式是一种模式，在面向对象语言中，它运用类与他们的方法来达到目标。开发人员通常回在学习编程语言，并在编写一段时间的代码之后才会考虑设计。或许我们已经注意到，某些人的代码简洁而实用，那么他们究竟是怎么样才能让代码拥有如此的简单之美？设计模式提升了代码的水准，通常会使用更少的类完成目标。模式是思想的体现，而非具体的实现。</p><p><strong>三、为什么选择Java</strong></p><p> 选择Java的一个重要原因在于它是一门面向对象语言，并且骄Java的包容性使得Java语言变得越来越流行，也确保了未来的语言将基于Java进行演变。</p><p><strong>四、设计模式的意图</strong></p><p> 设计模式的意图在于用更为方便的方式表达需求，而这些却是Java体哦那个的常规机制所无法满足的。列如，Java为定义一个接口提供了丰富的支持，以便类能够实现接口。然而，倘若我们能够拥有一个实现了“错误”接口类，却又需要满足客户的需求，就需要运用适配器模式。适配器的模式设计意图是内置于Java语言中的接口所无法满足的。所以我们将设计模式分为以下5类：</p><ol><li>接口型模式</li><li>职责型模式</li><li>构造型模式</li><li>操作型模式</li><li>扩展型模式 </li></ol><p><img src="/2020/08/05/sjms/2.png" alt></p><p> 接口型模式：抽象地讲，类的接口是类允许其他类对象访问的方法与字段集。接口通常代表一种承诺，即方法需要实现接口方法名表示的操作，遵循代码注释、测试和其他文档说明。类的实现就是位于方法体中的代码。</p><p>Java将接口概念提升为独立的结构，体现了接口（对象必须遵循的承诺）与实现（对象如何履行承诺）的分离。Java接口允许多个类提供相同的功能，也允许一个类同时实现多个类。</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;&lt;a href=&quot;https://www.cnblogs.com/Jenings/articles/11994446.html&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;23种设计模式及实现原理&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;一、常用23种设计
+      
+    
+    </summary>
+    
+    
+      <category term="study" scheme="https://Conanisbest.github.io/categories/study/"/>
+    
+    
+      <category term="设计模式" scheme="https://Conanisbest.github.io/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"/>
+    
+  </entry>
   
   <entry>
     <title>union和union all （记录合并）</title>

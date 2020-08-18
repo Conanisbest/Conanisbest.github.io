@@ -107,6 +107,61 @@
     
     
     <article
+  id="post-five"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2020/07/02/five/"
+    >解决java导出文件时文件名中文不显示/乱码</a> 
+</h2>
+ 
+
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2020/07/02/five/" class="article-date">
+  <time datetime="2020-07-02T07:39:23.000Z" itemprop="datePublished">2020-07-02</time>
+</a> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3/">问题解决</a>
+  </div>
+   
+    </div>
+      
+    <div class="article-entry" itemprop="articleBody">
+       
+  <p><strong>解决java导出文件时文件名中文不显示/乱码</strong></p>
+<p>直接把中文文件名改为iso-8859-1就可以了~</p>
+<p>response.setHeader(“Content-Disposition”, “attachment;filename=”     + new String(fileName.getBytes(),”iso-8859-1”) + “.xls”);</p>
+ 
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <footer class="article-footer">
+       
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3/" rel="tag">问题解决</a></li></ul>
+
+    </footer>
+  </div>
+
+    
+ 
+   
+</article>
+
+    
+    <article
   id="post-four"
   class="article article-type-post"
   itemscope

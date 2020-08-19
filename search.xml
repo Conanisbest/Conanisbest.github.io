@@ -2404,7 +2404,7 @@ ObjectInputStream会调用Student对象的readExternal(ObjectInput in)的方法�
 <figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Main</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">         </span><br><span class="line">        Integer i = <span class="number">10</span>;</span><br><span class="line">        <span class="keyword">int</span> n = i;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>　　反编译class文件之后得到如下内容：</p>
-<p>　　<img src="https://images0.cnblogs.com/i/288799/201406/101641567956500.jpg" alt="img"></p>
+<p>　　<img src="/2020/08/19/%E6%8B%86%E7%AE%B1%E8%A3%85%E7%AE%B1/101641567956500.jpg" alt="img"></p>
 <p>　　从反编译得到的字节码内容可以看出，在装箱的时候自动调用的是Integer的valueOf(int)方法。而在拆箱的时候自动调用的是Integer的intValue方法。</p>
 <p>　　其他的也类似，比如Double、Character，不相信的朋友可以自己手动尝试一下。</p>
 <p>　　因此可以用一句话总结装箱和拆箱的实现过程：</p>

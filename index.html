@@ -333,25 +333,25 @@
 <p>　　　　有了字节码文件对象才能获得类中所有的信息，我们在使用反射获取信息时，也要考虑使用上面哪种方式获取字节码对象合理，视不同情况而定。下面介绍Class类的功能。</p>
 <p>二、反射机制能够获取哪些信息？Class类的API详解。</p>
 <p>　　　　2.1、通过字节码对象创建实例对象</p>
-<p>　　　　　　　　　<a href="https://images2015.cnblogs.com/blog/874710/201703/874710-20170303112619454-1305170331.png" target="_blank" rel="noopener"><img src="https://images2015.cnblogs.com/blog/874710/201703/874710-20170303112619454-1305170331.png" alt="img"></a></p>
+<p><img src="/2020/08/28/%E5%8F%8D%E5%B0%84%E6%9C%BA%E5%88%B6/1.png" alt></p>
 <p>　　　　2.2、获取指定构造器方法。constructor 如果没有无参构造，只有有参构造如何创建实例呢？看下面</p>
-<p>　　　　　　　　　<a href="https://images2015.cnblogs.com/blog/874710/201703/874710-20170303113231923-2004471004.png" target="_blank" rel="noopener"><img src="https://images2015.cnblogs.com/blog/874710/201703/874710-20170303113231923-2004471004.png" alt="img"></a></p>
+<p><img src="/2020/08/28/%E5%8F%8D%E5%B0%84%E6%9C%BA%E5%88%B6/2.png" alt></p>
 <p>　　　　　　总结上面创建实例对象：Class类的newInstance()方法是使用该类无参的构造函数创建对象, 如果一个类没有无参的构造函数, 就不能这样创建了,可以调用Class类的　　　 　　　　　　　　　　　　　　　　　　　　　　　　　getConstructor(String.class,int.class)方法获取一个指定的构造函数然后再调用Constructor类的newInstance(“张三”,20)方法创建对象</p>
 <p>　　　　　　获取全部构造方法　　</p>
-<p>　　　　　　　　　<a href="https://images2015.cnblogs.com/blog/874710/201703/874710-20170303135322126-1646302487.png" target="_blank" rel="noopener"><img src="https://images2015.cnblogs.com/blog/874710/201703/874710-20170303135322126-1646302487.png" alt="img"></a>　　　　　</p>
+<p><img src="/2020/08/28/%E5%8F%8D%E5%B0%84%E6%9C%BA%E5%88%B6/3.png" alt>　</p>
 <p>　　　　2.3、获取成员变量并使用　　Field对象</p>
 <p>　　　　　　　　　获取指定成员变量</p>
-<p>　　　　　　　　　<a href="https://images2015.cnblogs.com/blog/874710/201703/874710-20170303132128282-555090131.png" target="_blank" rel="noopener"><img src="https://images2015.cnblogs.com/blog/874710/201703/874710-20170303132128282-555090131.png" alt="img"></a>　</p>
+<p>　<img src="/2020/08/28/%E5%8F%8D%E5%B0%84%E6%9C%BA%E5%88%B6/4.png" alt></p>
 <p>　　　　　　　　 Class.getField(String)方法可以获取类中的指定字段(可见的), 如果是私有的可以用getDeclaedField(“name”)方法获取,通过set(obj, “李四”)方法可以设置指定对象上该字段的值, 如果是私有的需要先调用setAccessible(true)设置访问权限,用获取的指定的字段调用get(obj)可以获取指定对象中该字段的值</p>
 <p>　　　　　　　　获取全部成员变量</p>
-<p>　　　　　　　　<a href="https://images2015.cnblogs.com/blog/874710/201703/874710-20170304092225813-2103417685.png" target="_blank" rel="noopener"><img src="https://images2015.cnblogs.com/blog/874710/201703/874710-20170304092225813-2103417685.png" alt="img"></a></p>
+<p><img src="/2020/08/28/%E5%8F%8D%E5%B0%84%E6%9C%BA%E5%88%B6/5.png" alt></p>
 <p>　　　　2.4、获得方法并使用　　Method</p>
-<p>　　　　　　　　　<a href="https://images2015.cnblogs.com/blog/874710/201703/874710-20170303133526266-1363632627.png" target="_blank" rel="noopener"><img src="https://images2015.cnblogs.com/blog/874710/201703/874710-20170303133526266-1363632627.png" alt="img"></a>　</p>
+<p><img src="/2020/08/28/%E5%8F%8D%E5%B0%84%E6%9C%BA%E5%88%B6/6.png" alt></p>
 <p>　　　　　　　　Class.getMethod(String, Class…) 和 Class.getDeclaredMethod(String, Class…)方法可以获取类中的指定方法,　　　　</p>
 <p>　　　　　　　　　　如果为私有方法，则需要打开一个权限。setAccessible(true);</p>
 <p>　　　　　　　　用invoke(Object, Object…)可以调用该方法，</p>
 <p>　　　　　　　　跟上面同理，也能一次性获得所有的方法</p>
-<p>　　　　　　　　　<a href="https://images2015.cnblogs.com/blog/874710/201703/874710-20170304093732095-982416677.png" target="_blank" rel="noopener"><img src="https://images2015.cnblogs.com/blog/874710/201703/874710-20170304093732095-982416677.png" alt="img"></a>　</p>
+<p><img src="/2020/08/28/%E5%8F%8D%E5%B0%84%E6%9C%BA%E5%88%B6/7.png" alt></p>
 <p>　　　　　　　　　　　　　　　</p>
 <p>　　　　2.5、获得该类的所有接口</p>
 <p>　　　　　　　　　Class[]　getInterfaces()：确定此对象所表示的类或接口实现的接口</p>
@@ -369,12 +369,12 @@
 <p>　　　　　　　2、通过Proxy类中的静态方法newProxyInstance，来将代理对象假装成那个被代理的对象，也就是如果叫人帮我们代买火车票一样，那个代理就假装成我们自己本人</p>
 <p>　　　　　　　3、执行方法，代理成功</p>
 <p>　　　　　　　　　　将代理对象中的内容进行实现</p>
-<p>　　　　　　　　　　<a href="https://images2015.cnblogs.com/blog/874710/201703/874710-20170304104548798-22446301.png" target="_blank" rel="noopener"><img src="https://images2015.cnblogs.com/blog/874710/201703/874710-20170304104548798-22446301.png" alt="img"></a>　　　　　</p>
-<p>　　　　　　　　　　<a href="https://images2015.cnblogs.com/blog/874710/201703/874710-20170304104823641-1640699358.png" target="_blank" rel="noopener"><img src="https://images2015.cnblogs.com/blog/874710/201703/874710-20170304104823641-1640699358.png" alt="img"></a>　　　</p>
-<p>　　　　　　　　　　<a href="https://images2015.cnblogs.com/blog/874710/201703/874710-20170304104930735-119845304.png" target="_blank" rel="noopener"><img src="https://images2015.cnblogs.com/blog/874710/201703/874710-20170304104930735-119845304.png" alt="img"></a></p>
+<p><img src="/2020/08/28/%E5%8F%8D%E5%B0%84%E6%9C%BA%E5%88%B6/8.png" alt>　　　　</p>
+<p><img src="/2020/08/28/%E5%8F%8D%E5%B0%84%E6%9C%BA%E5%88%B6/9.png" alt>　</p>
+<p>　　<img src="/2020/08/28/%E5%8F%8D%E5%B0%84%E6%9C%BA%E5%88%B6/10.png" alt></p>
 <p>　　</p>
 <p>　　　　　　　　1、2、3步</p>
-<p>　　　　　　　　　　<a href="https://images2015.cnblogs.com/blog/874710/201703/874710-20170304104703970-652894690.png" target="_blank" rel="noopener"><img src="https://images2015.cnblogs.com/blog/874710/201703/874710-20170304104703970-652894690.png" alt="img"></a></p>
+<p><img src="/2020/08/28/%E5%8F%8D%E5%B0%84%E6%9C%BA%E5%88%B6/11.png" alt></p>
 <p>　　　　　　　　注意newProxyInstance的三个参数，第一个，类加载器，第二个被代理对象的接口，第三个代理对象。　　</p>
 <p>　　　　　　　</p>
 <p>　　　　2.8、还有很多方法，比如获得类加载器，等等</p>
@@ -382,17 +382,17 @@
 <p>三、反射机制的应用实例</p>
 <p>　　　　3.1、利用反射，在泛型为int的arryaList集合中存放一个String类型的对象</p>
 <p>　　　　　　　原理：集合中的泛型只在编译器有效，而到了运行期，泛型则会失效，</p>
-<p>　　　　　　　　　<a href="https://images2015.cnblogs.com/blog/874710/201703/874710-20170304100752298-1881219565.png" target="_blank" rel="noopener"><img src="https://images2015.cnblogs.com/blog/874710/201703/874710-20170304100752298-1881219565.png" alt="img"></a></p>
+<p>　<img src="/2020/08/28/%E5%8F%8D%E5%B0%84%E6%9C%BA%E5%88%B6/12.png" alt></p>
 <p>　　　3.2、利用反射，简化编写Servlet的个数。</p>
 <p>　　　　　　　　什么意思呢？每当我们写一个功能时，就需要写一个对应的Servlet，导致最后Servlet有很多，自己都看不过来，所以对其进行了优化，两种方式，</p>
 <p>　　　　　　　　3.2.1、每次从页面传过来一个参数，method=”xxx”; 然后编写一个Servlet，获得其参数method的值，进行判断，如果是add，则调用add方法，如果是delete，则调用delete方法，这样就可以写在一个servlet中实现所有的功能了。　</p>
-<p>　　　　　　　　<a href="https://images2015.cnblogs.com/blog/874710/201703/874710-20170304112226766-1145131843.png" target="_blank" rel="noopener"><img src="https://images2015.cnblogs.com/blog/874710/201703/874710-20170304112226766-1145131843.png" alt="img"></a></p>
+<p><img src="/2020/08/28/%E5%8F%8D%E5%B0%84%E6%9C%BA%E5%88%B6/13.png" alt></p>
 <p>　　　　　　3.2.2、利用反射</p>
 <p>　　　　　　　　编写一个BaseServlet继承HttpServlet，这是一个通用的BaseServlet。需要明白servlet的生命周期</p>
-<p>　　　　　　　　<a href="https://images2015.cnblogs.com/blog/874710/201703/874710-20170304114713454-1242421691.png" target="_blank" rel="noopener"><img src="https://images2015.cnblogs.com/blog/874710/201703/874710-20170304114713454-1242421691.png" alt="img"></a></p>
+<p>　<img src="/2020/08/28/%E5%8F%8D%E5%B0%84%E6%9C%BA%E5%88%B6/14.png" alt></p>
 <p>　　　　　　　　编写具体实现的方法servlet类。</p>
 <p>　　　　　　　　MySerlvet001 extends BaseServlet</p>
-<p>　　　　　　　　<a href="https://images2015.cnblogs.com/blog/874710/201703/874710-20170304115442016-1321008496.png" target="_blank" rel="noopener"><img src="https://images2015.cnblogs.com/blog/874710/201703/874710-20170304115442016-1321008496.png" alt="img"></a></p>
+<p><img src="/2020/08/28/%E5%8F%8D%E5%B0%84%E6%9C%BA%E5%88%B6/15.png" alt></p>
 <p>　　　　　　　　</p>
 <p>　　　　　　　　解释：需要明白servlet的生命周期，也就是service方法，因为是servlet，所以在访问的时候，会经过service方法，而子类MyServlet001中并没有，所以就到父类BaseServlet中找，发现有，然后获取参数即知道了需要调用什么方法，因为方法的编写都在子类中，所以通过反射，获取到子类中对应的方法并运行，其中需要注意的是this这个参数在BaseServlet中的用法。需要理解它。才能理解我们这个程序。</p>
  

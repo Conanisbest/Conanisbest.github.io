@@ -11,7 +11,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
   <title>
-    接口和抽象类 |  Conan的博客
+    反射机制 |  Conan的博客
   </title>
   <meta name="generator" content="hexo-theme-ayer">
   
@@ -50,7 +50,7 @@
     <main class="content on">
       <section class="outer">
   <article
-  id="post-接口和抽象类"
+  id="post-反射机制"
   class="article article-type-post"
   itemscope
   itemprop="blogPost"
@@ -61,15 +61,15 @@
     <header class="article-header">
        
 <h1 class="article-title sea-center" style="border-left:0" itemprop="name">
-  接口和抽象类
+  反射机制
 </h1>
  
 
     </header>
      
     <div class="article-meta">
-      <a href="/2020/08/28/%E6%8E%A5%E5%8F%A3%E5%92%8C%E6%8A%BD%E8%B1%A1%E7%B1%BB/" class="article-date">
-  <time datetime="2020-08-28T09:03:21.000Z" itemprop="datePublished">2020-08-28</time>
+      <a href="/2020/08/28/%E5%8F%8D%E5%B0%84%E6%9C%BA%E5%88%B6/" class="article-date">
+  <time datetime="2020-08-28T09:11:53.000Z" itemprop="datePublished">2020-08-28</time>
 </a> 
   <div class="article-category">
     <a class="article-category-link" href="/categories/java/">java</a>
@@ -80,7 +80,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> Word count:</span>
-            <span class="post-count">1.9k</span>
+            <span class="post-count">1.8k</span>
         </span>
     </span>
 
@@ -96,67 +96,84 @@
  
     </div>
       
-    <div class="tocbot"></div>
-
 
 
 
   
     <div class="article-entry" itemprop="articleBody">
        
-  <h1 id="abstract-class和interface的区别"><a href="#abstract-class和interface的区别" class="headerlink" title="abstract class和interface的区别"></a>abstract class和interface的区别</h1><p>在Java语言中，abstract class和interface是支持抽象类定义的两种机制。正是由于这两种机制的存在，才赋予了Java强大的面向对象能力。abstract class和interface之间在对于抽象类定义的支持方面具有很大的相似性，甚至可以相互替换，因此很多开发者在进行抽象类定义时对于abstract class和interface的选择显得比较随意。其实，两者之间还是有很大的区别的，对于它们的选择甚至反映出对于问题领域本质的理解、对于设计意图的理解是否正确、合理。</p>
-<table>
-<thead>
-<tr>
-<th></th>
-<th>Abstract class</th>
-<th>Interface</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>实例化</td>
-<td>不能</td>
-<td>不能</td>
-</tr>
-<tr>
-<td>类</td>
-<td>一种继承关系，一个类只能使用一次继承关系。可以通过继承多个接口实现多重继承</td>
-<td>一个类可以实现多个interface</td>
-</tr>
-<tr>
-<td>数据成员</td>
-<td>可有自己的</td>
-<td>静态的不能被修改即必须是static final，一般不在此定义</td>
-</tr>
-<tr>
-<td>方法</td>
-<td>可以私有的，非abstract方法，必须实现</td>
-<td>不可有私有的，默认是public，abstract 类型</td>
-</tr>
-<tr>
-<td>变量</td>
-<td>可有私有的，默认是friendly 型，其值可以在子类中重新定义，也可以重新赋值</td>
-<td>不可有私有的，默认是public static final 型，且必须给其初值，实现类中不能重新定义，不能改变其值。</td>
-</tr>
-<tr>
-<td>设计理念</td>
-<td>表示的是“is-a”关系</td>
-<td>表示的是“like-a”关系</td>
-</tr>
-<tr>
-<td>实现</td>
-<td>需要继承，要用extends</td>
-<td>要用implements</td>
-</tr>
-</tbody></table>
-<p>abstract class和interface在Java语言中都是用来进行抽象类（本文中的抽象类并非从abstract class翻译而来，它表示的是一个抽象体，而abstract class为Java语言中用于定义抽象类的一种方法）定义的，那么什么是抽象类，使用抽象类能为我们带来什么好处呢？</p>
-<p>声明方法的存在而不去实现它的类被叫做抽象类（abstract class），它用于要创建一个体现某些基本行为的类，并为该类声明方法，但不能在该类中实现该类的情况。不能创建abstract 类的实例。然而可以创建一个变量，其类型是一个抽象类，并让它指向具体子类的一个实例。不能有抽象构造函数或抽象静态方法。Abstract 类的子类为它们父类中的所有抽象方法提供实现，否则它们也是抽象类为。取而代之，在子类中实现该方法。知道其行为的其它类可以在类中实现这些方法。</p>
-<p>接口（interface）是抽象类的变体。在接口中，所有方法都是抽象的。多继承性可通过实现 这样的接口而获得。接口中的所有方法都是抽象的，没有一个有程序体。接口只可以定义static final成员变量。接口的实现与子类相似，除了该实现类不能从接口定义中继承行为。当类实现特殊接口时，它定义（即将程序体给予）所有这种接口的方法。 然后，它可以在实现了该接口的类的任何对象上调用接口的方法。由于有抽象类，它允许使用接口名作为引用变量的类型。通常的动态联编将生效。引用可以转换到 接口类型或从接口类型转换，instanceof 运算符可以用来决定某对象的类是否实现了接口。</p>
-<p>接口可以继承接口。抽象类可以实现(implements)接口，抽象类是可以继承实体类，但前提是实体类必须有明确的构造函数。接口更关注“能实现什么功能”，而不管“怎么实现的”。</p>
-<p><strong>1.相同点</strong><br> A. 两者都是抽象类，都不能实例化。<br> B. interface实现类及abstrct class的子类都必须要实现已经声明的抽象方法。</p>
-<p><strong>2. 不同点</strong><br> A. interface需要实现，要用implements，而abstract class需要继承，要用extends。<br> B. 一个类可以实现多个interface，但一个类只能继承一个abstract class。<br> C. interface强调特定功能的实现，而abstract class强调所属关系。<br> D. 尽管interface实现类及abstrct class的子类都必须要实现相应的抽象方法，但实现的形式不同。interface中的每一个方法都是抽象方法，都只是声明的 (declaration, 没有方法体)，实现类必须要实现。而abstract class的子类可以有选择地实现。<br> 这个选择有两点含义：<br>  一是Abastract class中并非所有的方法都是抽象的，只有那些冠有abstract的方法才是抽象的，子类必须实现。那些没有abstract的方法，在Abstrct class中必须定义方法体。<br>  二是abstract class的子类在继承它时，对非抽象方法既可以直接继承，也可以覆盖；而对抽象方法，可以选择实现，也可以通过再次声明其方法为抽象的方式，无需实现，留给其子类来实现，但此类必须也声明为抽象类。既是抽象类，当然也不能实例化。<br> E. abstract class是interface与Class的中介。<br> interface是完全抽象的，只能声明方法，而且只能声明pulic的方法，不能声明private及protected的方法，不能定义方法体，也 不能声明实例变量。然而，interface却可以声明常量变量，并且在JDK中不难找出这种例子。但将常量变量放在interface中违背了其作为接 口的作用而存在的宗旨，也混淆了interface与类的不同价值。如果的确需要，可以将其放在相应的abstract class或Class中。<br> abstract class在interface及Class中起到了承上启下的作用。一方面，abstract class是抽象的，可以声明抽象方法，以规范子类必须实现的功能；另一方面，它又可以定义缺省的方法体，供子类直接使用或覆盖。另外，它还可以定义自己 的实例变量，以供子类通过继承来使用。</p>
-<p><strong>3. interface的应用场合</strong><br> A. 类与类之前需要特定的接口进行协调，而不在乎其如何实现。<br> B. 作为能够实现特定功能的标识存在，也可以是什么接口方法都没有的纯粹标识。<br> C. 需要将一组类视为单一的类，而调用者只通过接口来与这组类发生联系。<br> D. 需要实现特定的多项功能，而这些功能之间可能完全没有任何联系。</p>
-<p><strong>4. abstract class的应用场合</strong><br> 一句话，在既需要统一的接口，又需要实例变量或缺省的方法的情况下，就可以使用它。最常见的有：<br> A. 定义了一组接口，但又不想强迫每个实现类都必须实现所有的接口。可以用abstract class定义一组方法体，甚至可以是空方法体，然后由子类选择自己所感兴趣的方法来覆盖。<br> B. 某些场合下，只靠纯粹的接口不能满足类与类之间的协调，还必需类中表示状态的变量来区别不同的关系。abstract的中介作用可以很好地满足这一点。<br> C. 规范了一组相互协调的方法，其中一些方法是共同的，与状态无关的，可以共享的，无需子类分别实现；而另一些方法却需要各个子类根据自己特定的状态来实现特定的功能。</p>
+  <p>一、什么是反射？</p>
+<p>　　　　在运行状态中，对于任意一个类，都能够获取到这个类的所有属性和方法，对于任意一个对象，都能够调用它的任意一个方法和属性(包括私有的方法和属性)，这种动态获取的信息以及动态调用对象的方法的功能就称为java语言的反射机制。通俗点讲，通过反射，该类对我们来说是完全透明的，想要获取任何东西都可以。</p>
+<p>　　　　想要使用反射机制，就必须要先获取到该类的字节码文件对象(.class)，通过字节码文件对象，就能够通过该类中的方法获取到我们想要的所有信息(方法，属性，类名，父类名，实现的所有接口等等)，每一个类对应着一个字节码文件也就对应着一个Class类型的对象，也就是字节码文件对象。</p>
+<p>　　　　获取字节码文件对象的三种方式。</p>
+<p>　　　　　　　1、Class clazz1 = Class.forName(“全限定类名”);　　//通过Class类中的静态方法forName，直接获取到一个类的字节码文件对象，此时该类还是源文件阶段，并没有变为字节码文件。</p>
+<p>　　　　　　　2、Class clazz2 = Person.class;　　　　//当类被加载成.class文件时，此时Person类变成了.class，在获取该字节码文件对象，也就是获取自己， 该类处于字节码阶段。</p>
+<p>　　　　　　　3、Class clazz3 = p.getClass();　　　　//通过类的实例获取该类的字节码文件对象，该类处于创建对象阶段　</p>
+<p>　　　　有了字节码文件对象才能获得类中所有的信息，我们在使用反射获取信息时，也要考虑使用上面哪种方式获取字节码对象合理，视不同情况而定。下面介绍Class类的功能。</p>
+<p>二、反射机制能够获取哪些信息？Class类的API详解。</p>
+<p>　　　　2.1、通过字节码对象创建实例对象</p>
+<p>　　　　　　　　　<a href="https://images2015.cnblogs.com/blog/874710/201703/874710-20170303112619454-1305170331.png" target="_blank" rel="noopener"><img src="https://images2015.cnblogs.com/blog/874710/201703/874710-20170303112619454-1305170331.png" alt="img"></a></p>
+<p>　　　　2.2、获取指定构造器方法。constructor 如果没有无参构造，只有有参构造如何创建实例呢？看下面</p>
+<p>　　　　　　　　　<a href="https://images2015.cnblogs.com/blog/874710/201703/874710-20170303113231923-2004471004.png" target="_blank" rel="noopener"><img src="https://images2015.cnblogs.com/blog/874710/201703/874710-20170303113231923-2004471004.png" alt="img"></a></p>
+<p>　　　　　　总结上面创建实例对象：Class类的newInstance()方法是使用该类无参的构造函数创建对象, 如果一个类没有无参的构造函数, 就不能这样创建了,可以调用Class类的　　　 　　　　　　　　　　　　　　　　　　　　　　　　　getConstructor(String.class,int.class)方法获取一个指定的构造函数然后再调用Constructor类的newInstance(“张三”,20)方法创建对象</p>
+<p>　　　　　　获取全部构造方法　　</p>
+<p>　　　　　　　　　<a href="https://images2015.cnblogs.com/blog/874710/201703/874710-20170303135322126-1646302487.png" target="_blank" rel="noopener"><img src="https://images2015.cnblogs.com/blog/874710/201703/874710-20170303135322126-1646302487.png" alt="img"></a>　　　　　</p>
+<p>　　　　2.3、获取成员变量并使用　　Field对象</p>
+<p>　　　　　　　　　获取指定成员变量</p>
+<p>　　　　　　　　　<a href="https://images2015.cnblogs.com/blog/874710/201703/874710-20170303132128282-555090131.png" target="_blank" rel="noopener"><img src="https://images2015.cnblogs.com/blog/874710/201703/874710-20170303132128282-555090131.png" alt="img"></a>　</p>
+<p>　　　　　　　　 Class.getField(String)方法可以获取类中的指定字段(可见的), 如果是私有的可以用getDeclaedField(“name”)方法获取,通过set(obj, “李四”)方法可以设置指定对象上该字段的值, 如果是私有的需要先调用setAccessible(true)设置访问权限,用获取的指定的字段调用get(obj)可以获取指定对象中该字段的值</p>
+<p>　　　　　　　　获取全部成员变量</p>
+<p>　　　　　　　　<a href="https://images2015.cnblogs.com/blog/874710/201703/874710-20170304092225813-2103417685.png" target="_blank" rel="noopener"><img src="https://images2015.cnblogs.com/blog/874710/201703/874710-20170304092225813-2103417685.png" alt="img"></a></p>
+<p>　　　　2.4、获得方法并使用　　Method</p>
+<p>　　　　　　　　　<a href="https://images2015.cnblogs.com/blog/874710/201703/874710-20170303133526266-1363632627.png" target="_blank" rel="noopener"><img src="https://images2015.cnblogs.com/blog/874710/201703/874710-20170303133526266-1363632627.png" alt="img"></a>　</p>
+<p>　　　　　　　　Class.getMethod(String, Class…) 和 Class.getDeclaredMethod(String, Class…)方法可以获取类中的指定方法,　　　　</p>
+<p>　　　　　　　　　　如果为私有方法，则需要打开一个权限。setAccessible(true);</p>
+<p>　　　　　　　　用invoke(Object, Object…)可以调用该方法，</p>
+<p>　　　　　　　　跟上面同理，也能一次性获得所有的方法</p>
+<p>　　　　　　　　　<a href="https://images2015.cnblogs.com/blog/874710/201703/874710-20170304093732095-982416677.png" target="_blank" rel="noopener"><img src="https://images2015.cnblogs.com/blog/874710/201703/874710-20170304093732095-982416677.png" alt="img"></a>　</p>
+<p>　　　　　　　　　　　　　　　</p>
+<p>　　　　2.5、获得该类的所有接口</p>
+<p>　　　　　　　　　Class[]　getInterfaces()：确定此对象所表示的类或接口实现的接口</p>
+<p>　　　　　　　　　返回值：接口的字节码文件对象的数组</p>
+<p>　　　　2.6、获取指定资源的输入流</p>
+<p>　　　　　　　　　InputStream <code>getResourceAsStream(String name)</code></p>
+<p>　　　　　　　　　return：一个 InputStream 对象；如果找不到带有该名称的资源，则返回 <code>null</code></p>
+<p>　　　　　　　　　参数：所需资源的名称，如果以”/“开始，则绝对资源名为”/“后面的一部分。</p>
+<p>　　　　2.7、动态代理的概述和实现</p>
+<p>　　　　　　　动态代理：一种设计模式，其非常简单，很容易理解，你自己可以做这件事，但是觉得自己做非常麻烦或者不方便，所以就叫一个另一个人(代理)来帮你做这个事情，而你就不用管了，这就是动态代理。举个例子，买火车票叫人代买。 </p>
+<p>　　　　　　　在程序运行过程中产生的这个对象,而程序运行过程中产生对象其实就是我们刚才反射讲解的内容，所以，动态代理其实就是通过反射来生成一个代理</p>
+<p>　　　　　　　在Java中java.lang.reflect包下提供了一个Proxy类和一个InvocationHandler接口，通过使用这个类和接口就可以生成动态代理对象。JDK提供的代理只能针对接口做代理。我们有更强大的代理cglib，Proxy类中的方法创建动态代理类对象　</p>
+<p>　　　　　　　　分三步，但是注意JDK提供的代理正能针对接口做代理，也就是下面的第二步返回的必须要是一个接口。</p>
+<p>　　　　　　　1、new出代理对象，通过实现InvacationHandler接口，然后new出代理对象来。</p>
+<p>　　　　　　　2、通过Proxy类中的静态方法newProxyInstance，来将代理对象假装成那个被代理的对象，也就是如果叫人帮我们代买火车票一样，那个代理就假装成我们自己本人</p>
+<p>　　　　　　　3、执行方法，代理成功</p>
+<p>　　　　　　　　　　将代理对象中的内容进行实现</p>
+<p>　　　　　　　　　　<a href="https://images2015.cnblogs.com/blog/874710/201703/874710-20170304104548798-22446301.png" target="_blank" rel="noopener"><img src="https://images2015.cnblogs.com/blog/874710/201703/874710-20170304104548798-22446301.png" alt="img"></a>　　　　　</p>
+<p>　　　　　　　　　　<a href="https://images2015.cnblogs.com/blog/874710/201703/874710-20170304104823641-1640699358.png" target="_blank" rel="noopener"><img src="https://images2015.cnblogs.com/blog/874710/201703/874710-20170304104823641-1640699358.png" alt="img"></a>　　　</p>
+<p>　　　　　　　　　　<a href="https://images2015.cnblogs.com/blog/874710/201703/874710-20170304104930735-119845304.png" target="_blank" rel="noopener"><img src="https://images2015.cnblogs.com/blog/874710/201703/874710-20170304104930735-119845304.png" alt="img"></a></p>
+<p>　　</p>
+<p>　　　　　　　　1、2、3步</p>
+<p>　　　　　　　　　　<a href="https://images2015.cnblogs.com/blog/874710/201703/874710-20170304104703970-652894690.png" target="_blank" rel="noopener"><img src="https://images2015.cnblogs.com/blog/874710/201703/874710-20170304104703970-652894690.png" alt="img"></a></p>
+<p>　　　　　　　　注意newProxyInstance的三个参数，第一个，类加载器，第二个被代理对象的接口，第三个代理对象。　　</p>
+<p>　　　　　　　</p>
+<p>　　　　2.8、还有很多方法，比如获得类加载器，等等</p>
+<p>　　　　　　　具体还需要别的，就通过查看API文档来解决。</p>
+<p>三、反射机制的应用实例</p>
+<p>　　　　3.1、利用反射，在泛型为int的arryaList集合中存放一个String类型的对象</p>
+<p>　　　　　　　原理：集合中的泛型只在编译器有效，而到了运行期，泛型则会失效，</p>
+<p>　　　　　　　　　<a href="https://images2015.cnblogs.com/blog/874710/201703/874710-20170304100752298-1881219565.png" target="_blank" rel="noopener"><img src="https://images2015.cnblogs.com/blog/874710/201703/874710-20170304100752298-1881219565.png" alt="img"></a></p>
+<p>　　　3.2、利用反射，简化编写Servlet的个数。</p>
+<p>　　　　　　　　什么意思呢？每当我们写一个功能时，就需要写一个对应的Servlet，导致最后Servlet有很多，自己都看不过来，所以对其进行了优化，两种方式，</p>
+<p>　　　　　　　　3.2.1、每次从页面传过来一个参数，method=”xxx”; 然后编写一个Servlet，获得其参数method的值，进行判断，如果是add，则调用add方法，如果是delete，则调用delete方法，这样就可以写在一个servlet中实现所有的功能了。　</p>
+<p>　　　　　　　　<a href="https://images2015.cnblogs.com/blog/874710/201703/874710-20170304112226766-1145131843.png" target="_blank" rel="noopener"><img src="https://images2015.cnblogs.com/blog/874710/201703/874710-20170304112226766-1145131843.png" alt="img"></a></p>
+<p>　　　　　　3.2.2、利用反射</p>
+<p>　　　　　　　　编写一个BaseServlet继承HttpServlet，这是一个通用的BaseServlet。需要明白servlet的生命周期</p>
+<p>　　　　　　　　<a href="https://images2015.cnblogs.com/blog/874710/201703/874710-20170304114713454-1242421691.png" target="_blank" rel="noopener"><img src="https://images2015.cnblogs.com/blog/874710/201703/874710-20170304114713454-1242421691.png" alt="img"></a></p>
+<p>　　　　　　　　编写具体实现的方法servlet类。</p>
+<p>　　　　　　　　MySerlvet001 extends BaseServlet</p>
+<p>　　　　　　　　<a href="https://images2015.cnblogs.com/blog/874710/201703/874710-20170304115442016-1321008496.png" target="_blank" rel="noopener"><img src="https://images2015.cnblogs.com/blog/874710/201703/874710-20170304115442016-1321008496.png" alt="img"></a></p>
+<p>　　　　　　　　</p>
+<p>　　　　　　　　解释：需要明白servlet的生命周期，也就是service方法，因为是servlet，所以在访问的时候，会经过service方法，而子类MyServlet001中并没有，所以就到父类BaseServlet中找，发现有，然后获取参数即知道了需要调用什么方法，因为方法的编写都在子类中，所以通过反射，获取到子类中对应的方法并运行，其中需要注意的是this这个参数在BaseServlet中的用法。需要理解它。才能理解我们这个程序。</p>
  
       <!-- reward -->
       
@@ -223,7 +240,7 @@
     <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://conanisbest.github.io/2020/08/28/%E6%8E%A5%E5%8F%A3%E5%92%8C%E6%8A%BD%E8%B1%A1%E7%B1%BB/" alt="微信分享二维码">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://conanisbest.github.io/2020/08/28/%E5%8F%8D%E5%B0%84%E6%9C%BA%E5%88%B6/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -236,19 +253,19 @@
    
   <nav class="article-nav">
     
-      <a href="/2020/08/28/%E5%8F%8D%E5%B0%84%E6%9C%BA%E5%88%B6/" class="article-nav-link">
+      <a href="/2020/08/28/java%E6%B3%9B%E5%9E%8B/" class="article-nav-link">
         <strong class="article-nav-caption">上一篇</strong>
         <div class="article-nav-title">
           
-            反射机制
+            java泛型
           
         </div>
       </a>
     
     
-      <a href="/2020/08/27/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B4%A2%E5%BC%95/" class="article-nav-link">
+      <a href="/2020/08/28/%E6%8E%A5%E5%8F%A3%E5%92%8C%E6%8A%BD%E8%B1%A1%E7%B1%BB/" class="article-nav-link">
         <strong class="article-nav-caption">下一篇</strong>
-        <div class="article-nav-title">数据库索引</div>
+        <div class="article-nav-title">接口和抽象类</div>
       </a>
     
   </nav>
